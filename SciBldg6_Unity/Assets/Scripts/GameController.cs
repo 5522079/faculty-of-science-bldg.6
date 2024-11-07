@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        ResetAllPlayerPrefs();
+        //ResetAllPlayerPrefs();
     }
 
     public void StartTimer()
@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
 
     public void OpenContactURL()
     {
-        Application.OpenURL("https://www.noway-form.com/ja/f/29de34cd-043d-4c6a-81ef-faac0f3b710b");
+        Application.OpenURL("https://github.com/5522079/Faculty-of-Science-Bldg.6");
     }
 
     public void ResetAllPlayerPrefs()

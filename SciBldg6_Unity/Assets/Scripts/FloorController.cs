@@ -36,6 +36,14 @@ public class FloorController : MonoBehaviour
                 Material pMaterial = Resources.Load<Material>(pMaterialPath);
                 materialCache[pMaterialName] = pMaterial;
             }
+
+            foreach (var side in new[] { "Right", "Left" })
+            {
+                string materialName = $"info_{floor}_{side}";
+                string materialPath = $"Materials/f{floor}/{materialName}";
+                Material material = Resources.Load<Material>(materialPath);
+                materialCache[materialName] = material;
+            }
         }
         //Debug.Log($"{materialCache.Count} materials loaded");
     }
@@ -78,7 +86,7 @@ public class FloorController : MonoBehaviour
 
     private GameObject ApplyAbnormal()
     {
-        randomNum = Random.Range(1, 16);
+        randomNum = Random.Range(1, 18);
         string targetPrefix = $"ab_{randomNum}_";
         GameObject abnormal = null;
 
@@ -128,13 +136,13 @@ public class FloorController : MonoBehaviour
 
     private void ApplyMaterial(GameObject path, int counter)
     {
+        if (counter <= 1)
+        {
+            counter = 2;
+        }
+
         for (int room = 1; room <= 5; room++)
         {
-            if (counter <= 1)
-            {
-                counter = 2;
-            }
-
             string objectName = $"r{room}";
             string materialName = $"f{counter}_{objectName}";
 
@@ -144,27 +152,28 @@ public class FloorController : MonoBehaviour
             {
                 renderer.material = material;
             }
-            else
-            {
-                Debug.LogError($"Material '{materialName}' not found in cache");
-            }
-
 
             string pObjectName = $"r{room}_p";
             string pMaterialName = room <= 3 ? $"f{counter}_p" : $"f{counter}_p_1";
 
             Transform pObjectTransform = path.transform.Find(pObjectName);
             Renderer pRenderer = pObjectTransform.GetComponent<Renderer>();
-            if (pRenderer != null)
+            if (materialCache.TryGetValue(pMaterialName, out Material pMaterial))
             {
-                if (materialCache.TryGetValue(pMaterialName, out Material pMaterial))
-                {
-                    pRenderer.material = pMaterial;
-                }
-                else
-                {
-                    Debug.LogError($"Material '{pMaterialName}' not found in cache");
-                }
+                pRenderer.material = pMaterial;
+            }
+        }
+
+        foreach (var side in new[] { "Right", "Left" })
+        {
+            string objectName = $"info_5_{side}";
+            string materialName = $"info_{counter}_{side}";
+
+            Transform objectTransform = path.transform.Find(objectName);
+            Renderer renderer = objectTransform.GetComponent<Renderer>();
+            if (materialCache.TryGetValue(materialName, out Material material))
+            {
+                renderer.material = material;
             }
         }
     }
