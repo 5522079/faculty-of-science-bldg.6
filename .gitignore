@@ -5,7 +5,6 @@
 Library
 Temp
 Obj
-Build
 Builds
 Logs
 UserSettings
@@ -74,3 +73,5 @@ crashlytics-build.properties
 naichilab
 Prefabs
 Fonts
+
+docs/Build/docs.data
