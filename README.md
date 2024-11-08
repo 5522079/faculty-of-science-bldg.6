@@ -1,1 +1,0 @@
-# Faculty-of-Science-Bldg.6
