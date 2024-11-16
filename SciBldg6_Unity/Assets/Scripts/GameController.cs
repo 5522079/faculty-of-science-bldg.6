@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
 
     public void LoadTitleScene()
     {
-        FadeManager.Instance.LoadScene("Title", 0.2f);
+        FadeManager.Instance.LoadScene("00_Title", 0.2f);
     }
 
     public void ReturnToTitleScene()
@@ -89,30 +89,29 @@ public class GameController : MonoBehaviour
         {
             Destroy(persistentObject);
         }
-        FadeManager.Instance.LoadScene("Title", 2.0f);
-        Debug.Log("Return to Title Scene");
+        FadeManager.Instance.LoadScene("00_Title", 2.0f);
     }
 
     public void LoadCollectScene()
     {
-        FadeManager.Instance.LoadScene("Collection", 0.2f);
+        FadeManager.Instance.LoadScene("01_Collection", 0.2f);
     }
 
     public void LoadGameScene()
     {
-        FadeManager.Instance.LoadScene("Game", 2.0f);
+        FadeManager.Instance.LoadScene("10_Game", 2.0f);
         StartTimer();
     }
 
     public void LoadResultScene()
     {
         StopTimer();
-        FadeInManager.Instance.LoadScene("Result", 1.0f);
+        FadeInManager.Instance.LoadScene("11_Result", 1.0f);
     }
 
     public void OpenContactURL()
     {
-        Application.OpenURL("https://www.noway-form.com/ja/f/29de34cd-043d-4c6a-81ef-faac0f3b710b");
+        Application.OpenURL("https://github.com/5522079/Faculty-of-Science-Bldg.6/issues");
     }
 
     public void ResetAllPlayerPrefs()
