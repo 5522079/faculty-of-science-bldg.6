@@ -3,6 +3,7 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 Library
+Build
 Temp
 Obj
 Builds
@@ -72,6 +73,8 @@ crashlytics-build.properties
 
 naichilab
 Prefabs
-Fonts
-
-docs/Build/docs.data
+Resources
+WebGL Builds
+connectwebgl.zip
+webgl_sharing
+docs
